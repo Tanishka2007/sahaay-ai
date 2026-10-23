@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sahaay // Universal Triage Bridge (2040 AI Automation Engine)</title>
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Leaflet.js CDN for 2040 Futuristic Live AI Radar -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- Google Fonts: Futuristic Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- DYNAMIC 3D BACKGROUND (PURE CSS: SHIFTING GLOWING GRADIENTS, 3D MESH WAVE, PERSPECTIVE GRID & FLOATING PARTICLES) -->
+  <div class="bg-3d-scene" aria-hidden="true">
+    <div class="bg-gradient-flow"></div>
+    <div class="bg-3d-mesh-wave"></div>
+    <div class="bg-3d-grid-plane"></div>
+    <div class="bg-particles-layer">
+      <span class="particle p1"></span>
+      <span class="particle p2"></span>
+      <span class="particle p3"></span>
+      <span class="particle p4"></span>
+      <span class="particle p5"></span>
+      <span class="particle p6"></span>
+      <span class="particle p7"></span>
+      <span class="particle p8"></span>
+    </div>
+  </div>
+
+  <!-- Accessible Skip Link -->
+  <a href="#main-console" class="skip-link">Skip to Neural Incident Console</a>
+
+  <div class="cyber-shell">
+
+    <!-- FIXED LEFT SIDEBAR DOCK -->
+    <aside class="sidebar-dock" role="navigation" aria-label="Main Navigation Menu">
+      <!-- Brand Header -->
+      <div class="dock-header">
+        <div class="neural-orb" aria-hidden="true">
+          <div class="orb-aurora-ring"></div>
+          <span class="orb-glyph">✦</span>
+        </div>
+        <div class="dock-title-group">
+          <h1 class="dock-brand" data-i18n="brand_title">SAHAAY</h1>
+          <p class="dock-subtitle" data-i18n="brand_subtitle">AI TRIAGE BRIDGE // 2040</p>
+        </div>
+      </div>
+
+      <!-- Global Exit / Return to Main Portal Button -->
+      <div class="portal-exit-container">
+        <a href="https://github.com/tanishka-survase/sahaay-ai" target="_blank" rel="noopener noreferrer" class="btn-return-portal" id="btn-portal-exit" aria-label="Return to Main Portal">
+          <span class="portal-icon">⎋</span>
+          <span data-i18n="portal_exit">Return to Main Portal</span>
+        </a>
+      </div>
+
+      <!-- Sidebar Menu & Navigation -->
+      <nav class="dock-nav" role="tablist" aria-label="Incident Response & Services">
+        <!-- 📡 Live AI Radar (Interactive Map) -->
+        <button type="button" class="dock-tab active" data-view="radar" role="tab" id="tab-radar" aria-selected="true">
+          <span class="tab-glyph">📡</span>
+          <span class="tab-label" data-i18n="nav_radar">Live AI Radar</span>
+        </button>
+
+        <!-- 👤 Client Profile -->
+        <button type="button" class="dock-tab" data-view="profile" role="tab" id="tab-profile" aria-selected="false">
+          <span class="tab-glyph">👤</span>
+          <span class="tab-label" data-i18n="nav_profile">Client Profile</span>
+        </button>
+
+        <!-- 🧬 Medical AI Triage -->
+        <button type="button" class="dock-tab" data-view="medical" role="tab" id="tab-medical" aria-selected="false">
+          <span class="tab-glyph">🧬</span>
+          <span class="tab-label" data-i18n="nav_medical">Medical AI Triage</span>
+        </button>
+
+        <!-- 🛰️ Traffic & Infrastructure -->
+        <button type="button" class="dock-tab" data-view="traffic" role="tab" id="tab-traffic" aria-selected="false">
+          <span class="tab-glyph">🛰️</span>
+          <span class="tab-label" data-i18n="nav_traffic">Traffic & Infrastructure</span>
+        </button>
+
+        <!-- ⛈️ Climate & Disasters -->
+        <button type="button" class="dock-tab" data-view="climate" role="tab" id="tab-climate" aria-selected="false">
+          <span class="tab-glyph">⛈️</span>
+          <span class="tab-label" data-i18n="nav_climate">Climate & Disasters</span>
+        </button>
+
+        <!-- ❓ Others (Custom AI Triage) -->
+        <button type="button" class="dock-tab" data-view="others" role="tab" id="tab-others" aria-selected="false">
+          <span class="tab-glyph">❓</span>
+          <span class="tab-label" data-i18n="nav_others">Others (Custom Triage)</span>
+        </button>
+
+        <!-- 🚨 SOS / Emergency (High-Alert Red Styling) -->
+        <button type="button" class="dock-tab tab-sos" data-view="sos" role="tab" id="tab-sos" aria-selected="false">
+          <span class="tab-glyph tab-pulse">🚨</span>
+          <span class="tab-label" data-i18n="nav_sos">SOS / Emergency</span>
+        </button>
+
+        <!-- ℹ️ Help / FAQ / Contact -->
+        <button type="button" class="dock-tab" data-view="faq" role="tab" id="tab-faq" aria-selected="false">
+          <span class="tab-glyph">ℹ️</span>
+          <span class="tab-label" data-i18n="nav_faq">Help / FAQ / Contact</span>
+        </button>
+      </nav>
+
+      <!-- Sidebar Dock Footer -->
+      <div class="dock-footer">
+        <!-- Smooth Light/Dark Theme Switcher -->
+        <div class="theme-toggle-row">
+          <span class="theme-label" id="theme-label-text">Theme: Dark Cyber</span>
+          <button type="button" id="btn-theme-toggle" class="theme-toggle-btn" aria-label="Toggle Light/Dark Theme">
+            <span class="toggle-track">
+              <span class="toggle-thumb"></span>
+            </span>
+          </button>
+        </div>
+
+        <!-- Language Selector -->
+        <div class="lang-hologram-box">
+          <label for="lang-select" class="lang-label" data-i18n="lang_label">🌐 LANGUAGE</label>
+          <select id="lang-select" class="cyber-select" aria-label="Select Interface Language">
+            <option value="en" selected>English [EN]</option>
+            <option value="hi">हिन्दी [HI]</option>
+            <option value="mr">मराठी [MR]</option>
+            <option value="ta">தமிழ் [TA]</option>
+            <option value="gu">ગુજરાતી [GU]</option>
+          </select>
+        </div>
+
+        <!-- Live Engine Status Indicator -->
+        <div class="neural-link-pill" role="status" aria-live="polite">
+          <span class="link-pulse-dot"></span>
+          <span id="neural-status-label" data-i18n="status_active">GEMINI 2.5 FLASH ACTIVE</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN DYNAMIC CONTENT AREA (WITH FUTURISTIC FADE-IN TRANSITIONS) -->
+    <main id="main-console" class="main-console" role="main">
+
+      <!-- ===================================================================
+           VIEW 1: 📡 LIVE AI RADAR (INTERACTIVE LEAFLET MAP)
+           =================================================================== -->
+      <section id="view-radar" class="dynamic-view-panel" aria-labelledby="radar-heading">
+        <header class="hud-topbar">
+          <div class="hud-headings">
+            <div class="category-pill" data-i18n="radar_pill">📡 LIVE ORBITAL & GROUND RADAR</div>
+            <h2 id="radar-heading" class="view-heading" data-i18n="radar_heading">Autonomous Disaster & Infrastructure Radar</h2>
+            <p class="view-tagline" data-i18n="radar_tagline">
+              Real-time spatial telemetry overlaying pulsing disaster alerts, traffic collapses, and hospital bed capacities with predictive routing corridors.
+            </p>
+          </div>
+          <div class="hud-actions">
+            <button type="button" id="btn-radar-recenter" class="btn-hologram">
+              <span class="btn-spark">📍</span>
+              <span data-i18n="btn_radar_recenter">Lock User GPS</span>
+            </button>
+          </div>
+        </header>
+
+        <!-- Radar Stats HUD -->
+        <div class="radar-stats-grid">
+          <div class="cyber-glass-card stat-card">
+            <div class="stat-top">
+              <span class="stat-label" data-i18n="stat_active_alerts">Pulsing Red Alerts</span>
+              <span class="badge-pulsing-red">3 ACTIVE</span>
+            </div>
+            <div class="stat-val text-alert">CRITICAL ZONES</div>
+            <div class="stat-sub">Highway 9 Collapse, Sector 14 Flood, Chem Plume</div>
+          </div>
+
+          <div class="cyber-glass-card stat-card">
+            <div class="stat-top">
+              <span class="stat-label" data-i18n="stat_hospitals_online">Connected Hospitals</span>
+              <span class="badge-pulsing-green">3 VERIFIED</span>
+            </div>
+            <div class="stat-val text-mint">18 ICU BEDS</div>
+            <div class="stat-sub">Trauma bays operational, stroke teams standing by</div>
+          </div>
+
+          <div class="cyber-glass-card stat-card">
+            <div class="stat-top">
+              <span class="stat-label" data-i18n="stat_ripple_status">Ripple Engine Status</span>
+              <span class="badge-cyan">PREDICTING</span>
+            </div>
+            <div class="stat-val text-cyan">ACTIVE MITIGATION</div>
+            <div class="stat-sub">Pre-clearing emergency transit corridors & hospital diversions</div>
+          </div>
+        </div>
+
+        <!-- Radar Map Container & Filters -->
+        <div class="cyber-glass-card map-glass-wrapper">
+          <div class="map-controls-bar">
+            <div class="map-filter-tags">
+              <button type="button" class="btn-map-filter active" data-filter="all" data-i18n="filter_all">All Entities</button>
+              <button type="button" class="btn-map-filter" data-filter="alerts" data-i18n="filter_alerts">🚨 Pulsing Alerts</button>
+              <button type="button" class="btn-map-filter" data-filter="hospitals" data-i18n="filter_hospitals">🏥 Hospitals</button>
+            </div>
+            <div class="map-hint-text">
+              <span class="pulse-indicator"></span> Click any hospital or alert marker to view AI-decoded safety brief & deep-link route
+            </div>
+          </div>
+
+          <!-- Leaflet Map Mount Point -->
+          <div id="live-ai-radar-map" class="leaflet-map-frame" role="region" aria-label="Interactive AI Radar Map"></div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           VIEW 2: 👤 CLIENT PROFILE SECTION
+           =================================================================== -->
+      <section id="view-profile" class="dynamic-view-panel hidden" aria-labelledby="profile-heading">
+        <header class="hud-topbar">
+          <div class="hud-headings">
+            <div class="category-pill" data-i18n="profile_pill">👤 PROFILE SYNCHRONIZATION</div>
+            <h2 id="profile-heading" class="view-heading" data-i18n="profile_heading">Civilian Neural Health Profile</h2>
+            <p class="view-tagline" data-i18n="profile_tagline">
+              Your profile is automatically stored locally and injected into all AI triage requests to prevent lethal drug contraindications and ensure zero-delay identification.
+            </p>
+          </div>
+        </header>
+
+        <div class="cyber-glass-card profile-form-card">
+          <form id="profile-form" onsubmit="return false;">
+            <div class="form-grid-2">
+              <div class="hud-field-group">
+                <label for="prof-name" class="hud-field-label" data-i18n="prof_name_label">Full Legal Name</label>
+                <input type="text" id="prof-name" class="cyber-input" value="Ramesh Verma" required>
+              </div>
+
+              <div class="hud-field-group">
+                <label for="prof-blood" class="hud-field-label" data-i18n="prof_blood_label">Blood Type</label>
+                <select id="prof-blood" class="cyber-input">
+                  <option value="O+" selected>O+ (Positive)</option>
+                  <option value="O-">O- (Universal Donor)</option>
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="hud-field-group">
+                <label for="prof-contact" class="hud-field-label" data-i18n="prof_contact_label">Emergency Contact Phone (Next-of-Kin)</label>
+                <input type="tel" id="prof-contact" class="cyber-input" value="+91-98220-44911" required>
+              </div>
+
+              <div class="hud-field-group">
+                <label for="prof-allergies" class="hud-field-label" data-i18n="prof_allergies_label">Known Drug Allergies & Contraindications</label>
+                <input type="text" id="prof-allergies" class="cyber-input" value="SEVERE ANAPHYLACTIC SHOCK TO PENICILLIN & AMOXICILLIN" required>
+              </div>
+            </div>
+
+            <div class="hud-field-group">
+              <label for="prof-history" class="hud-field-label" data-i18n="prof_history_label">Chronic Medical History & Daily Medications</label>
+              <textarea id="prof-history" class="cyber-textarea" rows="3">Prior coronary stent in LAD (2020), Hypertension, Atorvastatin 40mg, Metoprolol 25mg daily.</textarea>
+            </div>
+
+            <div class="profile-actions-row">
+              <button type="button" id="btn-save-profile" class="btn-execute-quantum">
+                <span data-i18n="btn_save_profile">💾 SAVE & AUTO-INJECT PROFILE</span>
+              </button>
+              <span id="profile-save-status" class="status-saved-pill hidden" data-i18n="profile_synced_msg">✓ Synced to Neural Cache</span>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           VIEW 3: TRIAGE CORES (MEDICAL, TRAFFIC, CLIMATE, OTHERS)
+           =================================================================== -->
+      <section id="view-triage" class="dynamic-view-panel hidden" aria-labelledby="view-heading">
+        <!-- TOP CONTROL HUD -->
+        <header class="hud-topbar">
+          <div class="hud-headings">
+            <div class="category-pill" id="hud-category-pill">🧬 MEDICAL AI TRIAGE CORE</div>
+            <h2 class="view-heading" id="view-heading">Acute Symptoms & History Triage</h2>
+            <p class="view-tagline" id="view-tagline">
+              Ingest chaotic emergency transcripts and messy notes. Convert into verified clinical triage with 2nd and 3rd order ripple prediction.
+            </p>
+          </div>
+
+          <div class="hud-actions">
+            <button type="button" id="btn-load-preset" class="btn-hologram">
+              <span class="btn-spark" aria-hidden="true">⚡</span>
+              <span id="preset-btn-label" data-i18n="preset_btn_label">Load Chaos Scenario</span>
+            </button>
+          </div>
+        </header>
+
+        <!-- SPLIT INGESTION & ASYMMETRICAL OUTPUT CONTAINER -->
+        <div class="console-grid">
+
+          <!-- LEFT: INGESTION CONSOLE -->
+          <section class="cyber-glass-card ingest-console" aria-labelledby="ingest-title">
+            <div class="card-hud-bar">
+              <span class="card-step-tag" data-i18n="ingest_step">01 // INGESTION</span>
+              <h3 id="ingest-title" class="card-title" data-i18n="ingest_title">Unstructured Human Signal</h3>
+            </div>
+
+            <!-- Sensory Strip -->
+            <div class="sensory-strip" role="region" aria-label="Multimodal sensory tools">
+              <span class="strip-label" data-i18n="sensors_label">SENSORS:</span>
+              <div class="strip-buttons">
+                <button type="button" id="btn-voice-sos" class="btn-sensor btn-mic" aria-label="Record voice SOS">
+                  <span class="mic-dot"></span>
+                  <span id="label-sensor-voice" data-i18n="sensor_voice">🎙️ Voice SOS</span>
+                </button>
+
+                <label for="camera-input" class="btn-sensor btn-cam" aria-label="Capture distress photo">
+                  <span id="label-sensor-cam" data-i18n="sensor_cam">📷 Camera</span>
+                  <input type="file" id="camera-input" accept="image/*" capture="environment" class="hidden-input">
+                </label>
+
+                <button type="button" id="btn-gps-sync" class="btn-sensor btn-gps" aria-label="Detect GPS coordinates">
+                  <span id="label-sensor-gps" data-i18n="sensor_gps">📍 GPS Lock</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Live Voice Wave Bar -->
+            <div id="voice-wave-bar" class="voice-wave-banner hidden" role="status" aria-live="polite">
+              <span class="wave-recording-dot"></span>
+              <span id="voice-wave-text" data-i18n="voice_wave_text">Acoustic stream active... Transcribing panicked distress audio</span>
+              <span class="sound-bars" aria-hidden="true">
+                <i></i><i></i><i></i><i></i><i></i>
+              </span>
+            </div>
+
+            <!-- Image Evidence Preview -->
+            <div id="image-evidence-bar" class="image-evidence-banner hidden">
+              <img id="image-preview-elem" src="" alt="Evidence photo thumbnail" class="image-thumb">
+              <div class="image-meta">
+                <span id="image-name-elem" class="image-filename">evidence.jpg</span>
+                <span class="image-sub" data-i18n="image_sub">Visual feed staged for Gemini multimodal verification</span>
+              </div>
+              <button type="button" id="btn-discard-image" class="btn-discard" aria-label="Discard photo">✕</button>
+            </div>
+
+            <!-- Ingestion Form -->
+            <form id="triage-form" class="triage-form-inner" onsubmit="return false;">
+              <div class="hud-field-group">
+                <label for="primary-text" id="primary-label" class="hud-field-label">
+                  Audio Transcript / Panicked Input
+                </label>
+                <textarea 
+                  id="primary-text" 
+                  class="cyber-textarea" 
+                  rows="5" 
+                  required 
+                  placeholder="Paste panicked caller notes, transcribed 911 distress calls, or fragmented observations..."
+                ></textarea>
+                <span id="primary-hint" class="hud-field-hint">Accepts chaotic transcripts, conversational panic, or broken voice notes.</span>
+              </div>
+
+              <div class="hud-field-group" id="context-field-group">
+                <label for="context-text" id="context-label" class="hud-field-label">
+                  Context / Telemetry / Landmarks
+                </label>
+                <textarea 
+                  id="context-text" 
+                  class="cyber-textarea context-textarea" 
+                  rows="3" 
+                  placeholder="Prescription list, known drug allergies, past surgeries, or landmark clues..."
+                ></textarea>
+                <span id="context-hint" class="hud-field-hint">Messy clinic papers, past contraindications, or sensor telemetry.</span>
+              </div>
+
+              <!-- Profile Context Badge -->
+              <div class="injected-profile-pill">
+                <span>👤 <span data-i18n="injected_profile_prefix">Auto-Injecting Profile:</span> <strong id="injected-profile-name">Ramesh Verma (O+, Penicillin Allergy)</strong></span>
+              </div>
+
+              <button type="submit" id="btn-orchestrate" class="btn-execute-quantum">
+                <span class="btn-text" id="btn-orchestrate-text" data-i18n="btn_orchestrate_text">SYNTHESIZE & DISPATCH ACTIONS</span>
+                <span class="btn-arrow" aria-hidden="true">➔</span>
+              </button>
+            </form>
+          </section>
+
+          <!-- RIGHT: ASYMMETRICAL OUTPUT CONSOLE -->
+          <section class="cyber-glass-card output-console" aria-labelledby="output-title">
+            <div class="card-hud-bar">
+              <span class="card-step-tag" data-i18n="output_step">02 // AUTONOMOUS SYNTHESIS</span>
+              <h3 id="output-title" class="card-title" data-i18n="output_title">Civilian & Command Views</h3>
+            </div>
+
+            <!-- Standby Hologram Orb -->
+            <div id="standby-zone" class="standby-hologram" aria-live="polite">
+              <div class="hologram-projector" aria-hidden="true">
+                <div class="projector-glow"></div>
+                <div class="projector-mesh"></div>
+                <span class="projector-core">✦</span>
+              </div>
+              <h4 class="standby-heading" data-i18n="standby_heading">Awaiting Incident Stream</h4>
+              <p class="standby-detail" data-i18n="standby_detail">
+                Select an AI core on the left dock, attach live voice/photo inputs or load a preset, then trigger quantum synthesis.
+              </p>
+            </div>
+
+            <!-- Results Display Zone -->
+            <div id="results-zone" class="results-layout hidden" aria-live="assertive">
+
+              <!-- Conflict & Contraindication Alert Banner -->
+              <div id="conflict-card" class="conflict-hologram-banner hidden" role="alert">
+                <div class="conflict-glyph" aria-hidden="true">⚠️</div>
+                <div class="conflict-content">
+                  <h4 class="conflict-title" data-i18n="conflict_title">DISCREPANCY / CONTRAINDICATION DETECTED</h4>
+                  <p id="conflict-desc" class="conflict-text">--</p>
+                </div>
+              </div>
+
+              <!-- ===========================================================
+                   THE KILLER FEATURE: PREDICTIVE RIPPLE EFFECT ENGINE DISPLAY
+                   =========================================================== -->
+              <div class="asym-container ripple-engine-card" role="region" aria-labelledby="ripple-title">
+                <div class="box-top-row">
+                  <span class="box-icon" aria-hidden="true">🌊</span>
+                  <div class="ripple-header-split">
+                    <div>
+                      <h4 id="ripple-title" class="box-title" data-i18n="ripple_title">PREDICTIVE RIPPLE EFFECT ENGINE</h4>
+                      <span class="box-subtitle" data-i18n="ripple_subtitle">Autonomous 2nd & 3rd Order Cascading Incident Projection</span>
+                    </div>
+                    <div id="ripple-risk-badge" class="cyber-risk-badge">
+                      CASCADING RISK: CRITICAL
+                    </div>
+                  </div>
+                </div>
+
+                <div class="ripple-flow-timeline">
+                  <!-- 2nd Order Effect -->
+                  <div class="ripple-node node-second">
+                    <div class="node-pill">
+                      <span class="node-level">2ND ORDER EFFECT</span>
+                      <span class="node-tag">CASCADING DELAY</span>
+                    </div>
+                    <p id="ripple-second-order-text" class="node-description">
+                      Ambulance routes to City Hospital delayed by 40 minutes due to Highway 9 gridlock.
+                    </p>
+                  </div>
+
+                  <!-- 3rd Order Effect -->
+                  <div class="ripple-node node-third">
+                    <div class="node-pill">
+                      <span class="node-level">3RD ORDER EFFECT</span>
+                      <span class="node-tag">SYSTEMIC BOTTLENECK</span>
+                    </div>
+                    <p id="ripple-third-order-text" class="node-description">
+                      Trauma ICU bed saturation forces diversion of subsequent acute cases to regional clinics.
+                    </p>
+                  </div>
+
+                  <!-- Autonomous AI Mitigation -->
+                  <div class="ripple-node node-mitigation">
+                    <div class="node-pill pill-mitigation">
+                      <span class="node-level">AUTONOMOUS AI MITIGATION</span>
+                      <span class="node-tag tag-mitigation">ACTION EXECUTED</span>
+                    </div>
+                    <p id="ripple-mitigation-text" class="node-description text-mint">
+                      AI has automatically notified City Hospital and pre-cleared northern transit bypass signal cycles.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SECTION A: CIVILIAN VIEW (3 GLOWING SURVIVAL STEPS) -->
+              <div class="asym-container civilian-glow-box" role="region" aria-labelledby="civilian-title">
+                <div class="box-top-row">
+                  <span class="box-icon" aria-hidden="true">🛡️</span>
+                  <div>
+                    <h4 id="civilian-title" class="box-title" data-i18n="civilian_title">Civilian View</h4>
+                    <span class="box-subtitle" data-i18n="civilian_subtitle">3 Immediate Jargon-Free Survival Directives</span>
+                  </div>
+                </div>
+                <ol id="civilian-steps" class="civilian-numbered-list" aria-label="3 Immediate Survival Directives">
+                  <!-- Dynamically populated -->
+                </ol>
+              </div>
+
+              <!-- GOOGLE MAPS DEEP-LINKING ACTION BUTTON -->
+              <div class="maps-routing-card">
+                <a id="btn-maps-action" href="https://www.google.com/maps/dir/?api=1&destination=nearest+hospital" target="_blank" rel="noopener noreferrer" class="btn-maps-action">
+                  <span class="maps-icon">🗺️</span>
+                  <span id="maps-action-text" data-i18n="maps_action_text">NAVIGATE TO NEAREST EMERGENCY HOSPITAL (GOOGLE MAPS)</span>
+                  <span class="maps-arrow">➔</span>
+                </a>
+              </div>
+
+              <!-- SECTION B: NEAREST HOSPITALS DIRECTORY WITH LIVE CAPACITY -->
+              <div class="asym-container hospitals-box" role="region" aria-labelledby="hospitals-title">
+                <div class="box-top-row">
+                  <span class="box-icon" aria-hidden="true">🏥</span>
+                  <div class="hospitals-title-split">
+                    <div>
+                      <h4 id="hospitals-title" class="box-title" data-i18n="hospitals_title">Triangulated Coordinates & Hospital Directory</h4>
+                      <span id="geo-location-tag" class="location-coord-tag">18.5204° N, 73.8567° E (GPS Triangulated)</span>
+                    </div>
+                    <span class="live-orbit-badge" data-i18n="satellite_sync_badge">SATELLITE SYNC</span>
+                  </div>
+                </div>
+                <div id="hospitals-deck" class="hospitals-deck-grid">
+                  <!-- Dynamically populated hospital cards with Unsplash photos -->
+                </div>
+              </div>
+
+              <!-- SECTION C: COMMAND DISPATCH VIEW -->
+              <div class="asym-container command-box" role="region" aria-labelledby="command-title">
+                <div class="box-top-row">
+                  <span class="box-icon" aria-hidden="true">📋</span>
+                  <div class="command-title-split">
+                    <div>
+                      <h4 id="command-title" class="box-title" data-i18n="command_title">Command Dispatch View</h4>
+                      <span class="box-subtitle" data-i18n="command_subtitle">Autonomous Incident Manifest & Auditable Evidence Ledger</span>
+                    </div>
+                    <div id="priority-pill" class="cyber-priority-pill" role="status">
+                      P1 CRITICAL
+                    </div>
+                  </div>
+                </div>
+
+                <div id="command-table-zone" class="command-table-container">
+                  <!-- Dynamically populated table -->
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           VIEW 4: 🚨 SOS / EMERGENCY HIGH-ALERT SECTION
+           =================================================================== -->
+      <section id="view-sos" class="dynamic-view-panel hidden" aria-labelledby="sos-heading">
+        <header class="hud-topbar">
+          <div class="hud-headings">
+            <div class="category-pill pill-alert" data-i18n="sos_pill">🚨 CRITICAL EMERGENCY OVERRIDE</div>
+            <h2 id="sos-heading" class="view-heading text-alert" data-i18n="sos_heading">High-Alert Automated SOS Dispatch</h2>
+            <p class="view-tagline" data-i18n="sos_tagline">
+              One-click automated beacon that packages your live GPS coordinates, medical history, and blood type directly to national dispatch infrastructure.
+            </p>
+          </div>
+        </header>
+
+        <div class="sos-action-grid">
+          <!-- Big Automated Dispatch Beacon Button -->
+          <div class="cyber-glass-card sos-beacon-card">
+            <div class="sos-beacon-pulse-ring"></div>
+            <button type="button" id="btn-fire-sos" class="btn-fire-sos">
+              <span class="beacon-icon">🚨</span>
+              <span class="beacon-title" data-i18n="beacon_title">TRIGGER INSTANT SOS DISPATCH</span>
+              <span class="beacon-desc" data-i18n="beacon_desc">Simulate sending live GPS + Profile to 112 Command</span>
+            </button>
+            <div id="sos-dispatch-confirmation" class="sos-confirmation hidden" role="status" aria-live="assertive">
+              <span class="confirm-icon">✓</span>
+              <div>
+                <strong data-i18n="beacon_sent_strong">SOS BEACON TRANSMITTED:</strong>
+                <p id="sos-confirm-detail">Dispatching ALS Paramedics and Police units to your coordinates.</p>
+              </div>
+            </div>
+            <!-- Simulated Live Dispatch Terminal Log -->
+            <div id="sos-terminal-log" class="sos-terminal-window hidden">
+              <div class="terminal-bar">
+                <span class="term-dot dot-red"></span>
+                <span class="term-dot dot-yellow"></span>
+                <span class="term-dot dot-green"></span>
+                <span class="term-title">DISPATCH UPLINK // NATIONAL COMMAND 112</span>
+              </div>
+              <pre id="sos-terminal-text" class="terminal-body"></pre>
+            </div>
+          </div>
+
+          <!-- Police & Hospital Direct Google Maps Routing -->
+          <div class="cyber-glass-card sos-route-card">
+            <h3 class="card-title" data-i18n="direct_routing_title">Direct Emergency Routing</h3>
+            <p class="card-desc" data-i18n="direct_routing_desc">Deep-link to nearest safety installations using satellite GPS:</p>
+            <div class="sos-links-row">
+              <a id="btn-police-maps" href="https://www.google.com/maps/dir/?api=1&destination=nearest+police+station" target="_blank" rel="noopener noreferrer" class="btn-maps-action btn-maps-police">
+                <span data-i18n="route_police">🚔 Route to Nearest Police Station</span>
+                <span>➔</span>
+              </a>
+              <a id="btn-hosp-maps" href="https://www.google.com/maps/dir/?api=1&destination=nearest+hospital" target="_blank" rel="noopener noreferrer" class="btn-maps-action">
+                <span data-i18n="route_hosp">🏥 Route to Nearest Hospital</span>
+                <span>➔</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Local Emergency Speed Dial Directory -->
+        <div class="cyber-glass-card emergency-dial-card">
+          <h3 class="card-title" data-i18n="speed_dial_title">National Emergency Speed Dial</h3>
+          <div class="speed-dial-grid">
+            <a href="tel:112" class="dial-card">
+              <span class="dial-number">112</span>
+              <span class="dial-name" data-i18n="dial_112_name">Unified Emergency Services</span>
+            </a>
+            <a href="tel:108" class="dial-card">
+              <span class="dial-number">108</span>
+              <span class="dial-name" data-i18n="dial_108_name">Ambulance & Medical Emergency</span>
+            </a>
+            <a href="tel:100" class="dial-card">
+              <span class="dial-number">100</span>
+              <span class="dial-name" data-i18n="dial_100_name">Police Dispatch Center</span>
+            </a>
+            <a href="tel:101" class="dial-card">
+              <span class="dial-number">101</span>
+              <span class="dial-name" data-i18n="dial_101_name">Fire & Rescue Service</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           VIEW 5: ℹ️ HELP / FAQ / CONTACT SECTION
+           =================================================================== -->
+      <section id="view-faq" class="dynamic-view-panel hidden" aria-labelledby="faq-heading">
+        <header class="hud-topbar">
+          <div class="hud-headings">
+            <div class="category-pill" data-i18n="faq_pill">ℹ️ SYSTEM DOCUMENTATION & TELEMETRY</div>
+            <h2 id="faq-heading" class="view-heading" data-i18n="faq_heading">Help, System Architecture & Contact</h2>
+            <p class="view-tagline" data-i18n="faq_tagline">How Sahaay bridges chaotic human intent with deterministic 2040 emergency systems.</p>
+          </div>
+        </header>
+
+        <div class="faq-contact-grid">
+          <!-- FAQ Card Deck -->
+          <div class="cyber-glass-card faq-card-deck">
+            <h3 class="card-title" data-i18n="faq_deck_title">Frequently Asked Questions</h3>
+            <div class="faq-item">
+              <h4 class="faq-q" data-i18n="faq_q1">What is Sahaay: Universal Triage Bridge?</h4>
+              <p class="faq-a" data-i18n="faq_a1">Sahaay is an autonomous emergency automation engine powered by Google Gemini 2.5 Flash. It ingests messy voice transcripts, disaster reports, and physical sensor telemetry to produce verified civilian directives and structured CAD/FHIR dispatch manifests.</p>
+            </div>
+            <div class="faq-item">
+              <h4 class="faq-q" data-i18n="faq_q_ripple">What is the Predictive Ripple Effect Engine?</h4>
+              <p class="faq-a" data-i18n="faq_a_ripple">Whenever an emergency is decoded, Sahaay predicts 2nd and 3rd order impacts (e.g. traffic blockage delaying ambulances to City Hospital, cascading hospital ICU bed saturation) and autonomously executes mitigations before bottlenecks occur.</p>
+            </div>
+            <div class="faq-item">
+              <h4 class="faq-q" data-i18n="faq_q2">How does Client Profile Injection work?</h4>
+              <p class="faq-a" data-i18n="faq_a2">Your saved profile (blood group, chronic conditions, and lethal allergies like Penicillin) is automatically attached to backend triage payloads so the AI cross-verifies medication contraindications before first responders arrive.</p>
+            </div>
+            <div class="faq-item">
+              <h4 class="faq-q" data-i18n="faq_q3">What is Conflict Detection?</h4>
+              <p class="faq-a" data-i18n="faq_a3">When citizen panic contradicts physical reality (e.g. viral rumors claiming a dam collapsed while SCADA sensors report closed radial gates), the engine flags a discrepancy and enforces a fail-closed safety priority.</p>
+            </div>
+          </div>
+
+          <!-- Official Architecture & Contact Details Card -->
+          <div class="cyber-glass-card contact-info-card">
+            <h3 class="card-title" data-i18n="contact_hub_title">Official Architecture Hub</h3>
+            <div class="contact-details-list">
+              <div class="detail-block">
+                <span class="detail-label" data-i18n="contact_email_label_card">OFFICIAL SYSTEM EMAIL</span>
+                <a href="mailto:system@sahaay-ai.com" class="detail-val">system@sahaay-ai.com</a>
+              </div>
+              <div class="detail-block">
+                <span class="detail-label" data-i18n="contact_hq_label">HEADQUARTERS</span>
+                <span class="detail-val" data-i18n="contact_hq_val">Sahaay Emergency AI Operations, Sector 14 Innovation Corridor</span>
+              </div>
+              <div class="detail-block">
+                <span class="detail-label" data-i18n="contact_uptime_label">TELEMETRY UPTIME</span>
+                <span class="detail-val text-mint" data-i18n="contact_uptime_val">99.998% High Availability</span>
+              </div>
+              <div class="detail-block">
+                <span class="detail-label" data-i18n="contact_enc_label">ENCRYPTION PROTOCOL</span>
+                <span class="detail-val" data-i18n="contact_enc_val">Quantum-Resistant SHA-256 Mesh</span>
+              </div>
+            </div>
+
+            <div class="contact-form-embed">
+              <h4 class="sub-card-title" data-i18n="contact_form_title">Quick Dispatch Inquiries</h4>
+              <form id="contact-form" onsubmit="return false;">
+                <input type="text" id="contact-name" class="cyber-input mb-2" placeholder="Your Name or Agency" required>
+                <input type="email" id="contact-email" class="cyber-input mb-2" placeholder="officer@agency.gov.in" required>
+                <textarea id="contact-msg" class="cyber-textarea mb-2" rows="3" placeholder="Telemetry inquiry..." required></textarea>
+                <button type="button" id="btn-send-contact" class="btn-execute-quantum">
+                  <span data-i18n="contact_btn_text">TRANSMIT MESSAGE</span>
+                </button>
+                <div id="contact-status-msg" class="status-saved-pill hidden" data-i18n="contact_status_msg">✓ Message queued to system@sahaay-ai.com</div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- CORE SCRIPT -->
+  <script src="app.js"></script>
+</body>
+</html>
